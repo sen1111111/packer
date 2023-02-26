@@ -1,0 +1,32 @@
+{
+  "variables": {
+    "aws_access_key": "AKIA5QPLNXCTEQLJINOZ",
+    "aws_secret_key": "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"
+  },
+  "builders": [
+    {
+      "type": "amazon-ebs",
+      "access_key": "{{user `AKIA5QPLNXCTEQLJINOZ`}}",
+      "secret_key": "{{user `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`}}",
+      "region": "us-west-2",
+      "source_ami": "ami-04309224d2c67cf9b",
+      "instance_type": "t2.micro",
+      "ssh_username": "ubuntu",
+      "ami_name": "qtphpinfo"
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "shell",
+      "inline": [
+        "apt update",
+        "apt install apache2 stress -y",
+        "cat /var/www/html/info.php",
+        "chmod 777 /var/www/html/info.php",
+        "apt install php libapache2-mod-php php-mysql -y",
+        "echo '<?php phpinfo(); ?>' > /var/www/html/info.php",
+        "systemctl restart apache2"
+      ]
+    }
+  ]
+}
