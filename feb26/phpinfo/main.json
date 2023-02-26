@@ -19,13 +19,13 @@
     {
       "type": "shell",
       "inline": [
-        "apt update",
-        "apt install apache2 stress -y",
-        "cat /var/www/html/info.php",
-        "chmod 777 /var/www/html/info.php",
-        "apt install php libapache2-mod-php php-mysql -y",
+        "sudo apt update",
+        "sudo apt install apache2 stress -y",
+        "sudo  cat /var/www/html/info.php",
+        "sudo  chmod 777 /var/www/html/info.php",
+        "sudo  apt install php libapache2-mod-php php-mysql -y",
         "echo '<?php phpinfo(); ?>' > /var/www/html/info.php",
-        "systemctl restart apache2"
+        "sudo  systemctl restart apache2"
       ]
     }
   ]
