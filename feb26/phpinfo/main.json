@@ -1,7 +1,7 @@
 {
   "variables": {
-    "aws_access_key": "AKIA5QPLNXCTEQLJINOZ",
-    "aws_secret_key": "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"
+    "aws_access_key": "",
+    "aws_secret_key": ""
   },
   "builders": [
     {
@@ -18,15 +18,7 @@
   "provisioners": [
     {
       "type": "shell",
-      "inline": [
-        "sudo apt update",
-        "sudo apt install apache2 stress -y",
-        "sudo  cat /var/www/html/info.php",
-        "sudo  chmod 777 /var/www/html/info.php",
-        "sudo  apt install php libapache2-mod-php php-mysql -y",
-        "echo '<?php phpinfo(); ?>' > /var/www/html/info.php",
-        "sudo  systemctl restart apache2"
-      ]
+      "script": "script1.sh"
     }
   ]
 }
